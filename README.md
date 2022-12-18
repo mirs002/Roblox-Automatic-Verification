@@ -13,7 +13,7 @@ This was tested in Windows but should work with other operating systems.
 1. Install [Python 3.X](https://www.python.org/downloads/) & [Google Chrome](https://www.google.com/chrome/)
 2. Open command prompt in the downloaded directory ``cd C:\location\to\file``
 3. Install the requirements.txt file by using ```pip -r requirements.txt```
-4. Head over to Gmail Preparation Guide to Continue with the Guide.
+4. Head over to [Gmail Preparation Guide](https://github.com/mirs002/Roblox-Automatic-Verification#gmail-preparation-guide) to Continue with the Guide.
 ## Gmail Preparation Guide
 
 This is a mandatory requirement in-order to ensure that the program can access your gmail and it's contents.
