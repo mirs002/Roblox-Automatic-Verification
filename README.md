@@ -8,14 +8,14 @@ This was tested in Windows but should work with other operating systems.
 ## Installation Guide (Windows)
 
 1. Install [Python 3.X](https://www.python.org/downloads/) & [Google Chrome](https://www.google.com/chrome/)
-2. Open command prompt in the downloaded directory ``cd locationtofile``
-3. Install the requirements.txt file by using ```py pip -r requirements.txt```
+2. Open command prompt in the downloaded directory ``cd C:\location\to\file``
+3. Install the requirements.txt file by using ```pip -r requirements.txt```
 4. Head over to Gmail Preparation Guide to Continue with the Guide.
 ## Gmail Preparation Guide
 
 This is a mandatory requirement in-order to ensure that the program can access your gmail and it's contents.
 
-1. Head over to [Gmail](mail.google.com) and then Click See All Settings
+1. Head over to [Gmail](https://mail.google.com) and then Click See All Settings
 ![Click the Gear Icon then See All Settings](https://cdn.discordapp.com/attachments/567688006341885953/1054017230255431781/firefox_byX6VXcR6A.png)
 2. Click Forwarding and POP/IMAP and enable IMAP then click save changes.
 ![Forwarding and POP/IMAP](https://cdn.discordapp.com/attachments/567688006341885953/1054017631201525915/firefox_Iuxz0AfqE3.png)
