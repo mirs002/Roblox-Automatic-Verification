@@ -32,7 +32,7 @@ then [Go to Manage Your Google Account](https://myaccount.google.com/)
 8. Type ``new`` and Input your **gmail address** and **app specific password**
 9. The Program should be running as intended if all of the above steps are correct.
 
-##Additional Steps
+# Additional Steps
 1. You can create your own encryption key using ``generateKey.py`` and assign it in ``main.py`` line 13
 
 **That's all!**
