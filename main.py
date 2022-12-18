@@ -2,29 +2,34 @@ import imaplib
 import email
 import time
 import json
+import os
 
 from cryptography.fernet import Fernet
-from selenium.webdriver.chrome.options import Options
 from selenium import webdriver
+from selenium.webdriver.chrome.options import Options
 from selenium.webdriver.chrome.service import Service
 from webdriver_manager.chrome import ChromeDriverManager
+from pystyle import Write, Colors, Colorate
+
+# Clear cmd so it doesn't look crowded
+os.system('cls' if os.name == 'nt' else 'clear')
 
 # Assign cryptography key
-key = 'Jq00OK3wOGIgSD1CslnZ6DAR6B20ZaMfBM7ACylBYOk='
+key = '9GWS2i18XamgBtOgfE4rTi25A0UYwp0kWIKie0YcPhk='
 # You can create a new one using generateKey.py
 # You will have to re-enter the email and password when you switch to a different cryptography key
 fernet = Fernet(key)
 
 
 # Ask if the user wants to use last gmail account or a new gmail account
-oldnewChoice = input("Would you like to use last saved email:pass or use a new one? (old/new): ")
+oldnewChoice = Write.Input("Would you like to use saved credentials or use a new one? (old/new)-> ", Colors.white, interval=0.0025)
 if oldnewChoice == 'old':
     pass
 elif oldnewChoice == 'new':
     # Encrypt the credentials
-    inpGmail = input("Input the gmail: ")
+    inpGmail = Write.Input("Input the gmail: ", Colors.white, interval=0.0025)
     newGmail = fernet.encrypt(inpGmail.encode()).decode()
-    inpPassword = input("Input the password: ")
+    inpPassword = Write.Input("Input the password: ", Colors.white, interval=0.0025)
     newPassword = fernet.encrypt(inpPassword.encode()).decode()
     credentials = {'email':newGmail,
                    'password':newPassword}
@@ -42,14 +47,14 @@ try:
         jsonData = json.loads(json_file.read())
         encGmail = jsonData['email']
         encPassword = jsonData['password']
-        gmail = fernet.decrypt(encGmail).decode()
-        password = fernet.decrypt(encPassword).decode()
+        gmail = fernet.decrypt(encGmail.encode()).decode()
+        password = fernet.decrypt(encPassword.encode()).decode()
 except FileNotFoundError as i:
-    print("Can not find credentials.json, you should choose (new) if you want to create one")
+    Write.Print("\nCan not find credentials.json, you should choose (new) if you want to create one", Colors.red, interval=0.0025)
     input("")
     exit()
 except json.decoder.JSONDecodeError:
-    print("credentials.json is either empty or missing information, you should choose (new) if you want to reassign credentials")
+    Write.Print("\ncredentials.json is either empty or missing information, you should choose (new) if you want to reassign credentials", Colors.red, interval=0.0025)
     input("")
     exit()
 
@@ -60,23 +65,36 @@ except json.decoder.JSONDecodeError:
 try:
  mail.login(gmail, password)
 except:
-    print("Invalid credentials.")
+    Write.Print("\nInvalid credentials.", Colors.red, interval=0.0025)
     input("")
     exit()
+
+
 
 def main():
 
 
     while True:
+        Write.Print("\nStarted listening for emails.\n", Colors.yellow, interval=0.0025)
         # Check for emails from "Roblox" with the word "Verification" in the subject
         while True:
             mail.select("inbox")
-            status, msgnums = mail.search(None, '(FROM "Roblox")', '(SUBJECT "Verification")','(UNSEEN)' )
+            status, msgnums = mail.search(None, '(FROM "Roblox")', '(SUBJECT "Verification")', '(UNSEEN)')
+
             time.sleep(1)
             if msgnums == [b'']:
                 pass
             else:
-                print("Received Email.")
+                global username
+                for msgnum in msgnums[0].split():
+                    # Getch the email message by ID
+                    status, data = mail.fetch(msgnum, '(RFC822)')
+
+                    # Get the subject from the email
+                    subject = (data[0][1].decode()).split('Subject: ')[1].split('\r\n')[0]
+                    username = subject.partition(": ")[2]
+                    Write.Print(f"Received Email for: {username}.\n", Colors.blue, interval=0.0025)
+                    break
                 break
 
 
@@ -87,6 +105,7 @@ def main():
             message = email.message_from_bytes(data[0][1])
             # Mark email as seen
             mail.store(msgnum, '+FLAGS', '(SEEN)')
+
 
             for part in message.walk():
                 if part.get_content_type() == "text/plain":
@@ -111,14 +130,16 @@ def main():
 
                     # Open the link on selenium chrome instance
                     opt = Options()
+                    opt.add_experimental_option('excludeSwitches', ['enable-logging'])
                     opt.add_argument('--disable-notifications')
                     opt.add_argument("--headless") # You can remove this line if you want to see the chrome instance
                     driver = webdriver.Chrome(service=Service(ChromeDriverManager().install()), options=opt)
                     driver.get(link)
-                    print(f'Verified Link: {link}')
+                    Write.Print(f'Verified: {username}\n', Colors.green, interval=0.0025)
 
                     # Close the background chrome instance
                     driver.quit()
+            break
         time.sleep(1)
 
 if __name__ == '__main__':
