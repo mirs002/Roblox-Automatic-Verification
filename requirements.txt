@@ -1,3 +1,4 @@
 cryptography==37.0.4
+pystyle==2.9
 selenium==4.7.2
 webdriver_manager==3.8.5
