@@ -15,7 +15,7 @@ from pystyle import Write, Colors, Colorate
 os.system('cls' if os.name == 'nt' else 'clear')
 
 # Assign cryptography key
-key = '9GWS2i18XamgBtOgfE4rTi25A0UYwp0kWIKie0YcPhk='
+key = 'Jq00OK3wOGIgSD1CslnZ6DAR6B20ZaMfBM7ACylBYOk='
 # You can create a new one using generateKey.py
 # You will have to re-enter the email and password when you switch to a different cryptography key
 fernet = Fernet(key)
