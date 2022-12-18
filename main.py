@@ -10,7 +10,7 @@ from selenium.webdriver.chrome.service import Service
 from webdriver_manager.chrome import ChromeDriverManager
 
 # Assign cryptography key
-key = ''
+key = 'Jq00OK3wOGIgSD1CslnZ6DAR6B20ZaMfBM7ACylBYOk='
 # You can create a new one using generateKey.py
 # You will have to re-enter the email and password when you switch to a different cryptography key
 fernet = Fernet(key)
