@@ -36,6 +36,7 @@ then [Go to Manage Your Google Account](https://myaccount.google.com/)
 
 ## Additional Steps
 1. You can create your own encryption key using ``generateKey.py`` and assign it in ``main.py`` line 13
+(I am aware this is not the most secure way to store credentials, but i tried to make it as simple as possible.)
 
 
 ## To-Do Features
