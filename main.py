@@ -1,8 +1,10 @@
 import imaplib
 import email
+import threading
 import time
 import json
 import os
+
 
 from cryptography.fernet import Fernet
 from selenium import webdriver
@@ -72,16 +74,27 @@ except:
 
 
 def main():
+    # Start a selenium webdriver
+    opt = Options()
+    opt.add_experimental_option('excludeSwitches', ['enable-logging'])
+    opt.add_argument('--disable-notifications')
+    opt.add_argument("--headless")  # You can remove this line if you want to see the chrome instance
+    driver = webdriver.Chrome(service=Service(ChromeDriverManager().install()), options=opt)
+
 
 
     while True:
         Write.Print("\nStarted listening for emails.\n", Colors.yellow, interval=0.0025)
         # Check for emails from "Roblox" with the word "Verification" in the subject
         while True:
-            mail.select("inbox")
+            try:
+                mail.select("inbox")
+            except:
+                Write.Print("\nLost connection to imap.gmail.com", Colors.red, interval=0.0025)
+                input("")
+                exit()
             status, msgnums = mail.search(None, '(FROM "Roblox")', '(SUBJECT "Verification")', '(UNSEEN)')
 
-            time.sleep(1)
             if msgnums == [b'']:
                 pass
             else:
@@ -128,19 +141,14 @@ def main():
                     link1 += link2
                     link = link1
 
+
                     # Open the link on selenium chrome instance
-                    opt = Options()
-                    opt.add_experimental_option('excludeSwitches', ['enable-logging'])
-                    opt.add_argument('--disable-notifications')
-                    opt.add_argument("--headless") # You can remove this line if you want to see the chrome instance
-                    driver = webdriver.Chrome(service=Service(ChromeDriverManager().install()), options=opt)
                     driver.get(link)
                     Write.Print(f'Verified: {username}\n', Colors.green, interval=0.0025)
 
-                    # Close the background chrome instance
-                    driver.quit()
+
             break
-        time.sleep(1)
+
 
 if __name__ == '__main__':
     main()
