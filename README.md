@@ -1,7 +1,7 @@
 
 # Roblox Automatic Verification
 <p align="center">
-  <img src="https://cdn.discordapp.com/attachments/829094363912470529/1054376692023574608/EmailVerification.gif" />
+  <img src="https://cdn.discordapp.com/attachments/567688006341885953/1054375086750191626/WindowsTerminal_lOtkHWM8ft.gif" />
 </p>
 
 Automatically verifies upon receiving verification email. Used to verify multiple accounts at once automatically.
