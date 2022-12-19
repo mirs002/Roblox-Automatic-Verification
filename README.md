@@ -45,6 +45,7 @@ You can edit configuration by editing the configuration.json
 
 ```"Always_Use_Old_credentials": false,``` - Always selects the "Old/Saved" Credentials
 ```"Run_In_Background/Headless": true,```  - Runs the browser window silently in the background [Make it false if you want to see what the program does] 
+
 ```"Verbose_Output": true```               - Provides detailed output which can be used to pinpoint errors/issues.
 
 ## To-Do Features
