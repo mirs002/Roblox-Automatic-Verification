@@ -1,7 +1,7 @@
 
 # Roblox Automatic Verification
 <p align="center">
-  <img src="https://cdn.discordapp.com/attachments/829094363912470529/1054136810076381214/ezgif.com-gif-maker.gif" />
+  <img src="https://cdn.discordapp.com/attachments/829094363912470529/1054376692023574608/EmailVerification.gif" />
 </p>
 
 Automatically verifies upon receiving verification email. Used to verify multiple accounts at once automatically.
@@ -45,6 +45,7 @@ then [Go to Manage Your Google Account](https://myaccount.google.com/)
 ## To-Do Features
 - [x]  Add the ability to add your own key for encryption
 - [x]  Improved Output and Stylization
+- [x]  Sped up the Process of Verification (Details about it in Release Log)
 - [ ]  Add Multi-Threaded Support
 - [ ]  Implement a GUI
 
