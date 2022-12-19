@@ -46,7 +46,9 @@ then [Go to Manage Your Google Account](https://myaccount.google.com/)
 - [x]  Add the ability to add your own key for encryption
 - [x]  Improved Output and Stylization
 - [x]  Sped up the Process of Verification (Details about it in Release Log)
+- [ ]  Add configurations
 - [ ]  Add Multi-Threaded Support
 - [ ]  Implement a GUI
+
 
 
