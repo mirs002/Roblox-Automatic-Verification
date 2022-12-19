@@ -38,15 +38,20 @@ then [Go to Manage Your Google Account](https://myaccount.google.com/)
 **That's all!**
 
 ## Additional Steps
-1. You can create your own encryption key using ``generateKey.py`` and assign it in ``main.py`` line 13
+You can create your own encryption key using ``generateKey.py`` and assign it in ``main.py`` line 13
 (I am aware this is not the most secure way to store credentials, but i tried to make it as simple as possible.)
 
+You can edit configuration by editing the configuration.json  
+
+```"Always_Use_Old_credentials": false,``` - Always selects the "Old/Saved" Credentials
+```"Run_In_Background/Headless": true,```  - Runs silently in the background [Always_Use_Old_credentials must be true]
+```"Verbose_Output": true```               - Provides detailed output which can be used to pinpoint errors/issues.
 
 ## To-Do Features
 - [x]  Add the ability to add your own key for encryption
 - [x]  Improved Output and Stylization
 - [x]  Sped up the Process of Verification (Details about it in Release Log)
-- [ ]  Add configurations
+- [x]  Add configurations
 - [ ]  Add Multi-Threaded Support
 - [ ]  Implement a GUI
 
