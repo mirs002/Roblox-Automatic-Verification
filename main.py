@@ -1,7 +1,5 @@
 import imaplib
 import email
-import threading
-import time
 import json
 import os
 
